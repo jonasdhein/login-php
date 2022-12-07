@@ -41,12 +41,13 @@ if (isset($_GET["id"])) { //isset = Verifica se existe o parametro ID na URL
 
                 <form method="post" action="actions/actions.php?tipo=cliente">
 
-                    <label>Nome</label>
-                    <input type="text" class="form-control" 
-                        name="nome" placeholder="Nome" 
-                        value="<?php echo ($cliente != null ? $cliente['nome'] : '') ?>">
+                    <input type="hidden" class="form-control" name="id" 
+                    value="<?php echo ($cliente != null ? $cliente['id'] : '') ?>">
 
-                    <button class="btn btn-warning" type="reset">Limpar</button>
+                    <label>Nome</label>
+                    <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo ($cliente != null ? $cliente['nome'] : '') ?>">
+
+                    <input class="btn btn-warning" value="Limpar" type="reset">
                     <button class="btn btn-primary" type="submit">Salvar</button>
 
                 </form>
