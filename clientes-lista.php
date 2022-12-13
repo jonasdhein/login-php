@@ -30,6 +30,7 @@ $conexao = require('database/config.php');
                     <thead>
                         <tr>
                             <th scope="col">Nome</th>
+                            <th scope="col">E-mail</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
@@ -40,6 +41,7 @@ $conexao = require('database/config.php');
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             echo "<tr>
                                     <td>" . $row['nome'] . "</td>
+                                    <td>" . $row['email'] . "</td>
                                     <td>
                                         <a class='btn btn-md btn-success'
                                         href='clientes.php?id=" . $row['id'] . "'>

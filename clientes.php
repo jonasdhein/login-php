@@ -37,15 +37,30 @@ if (isset($_GET["id"])) { //isset = Verifica se existe o parametro ID na URL
         <?php include('menu.php') ?>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-sm-12">
 
                 <form method="post" action="actions/actions.php?tipo=cliente">
 
-                    <input type="hidden" class="form-control" name="id" 
-                    value="<?php echo ($cliente != null ? $cliente['id'] : '') ?>">
+                    <input type="hidden" class="form-control" name="id" value="<?php echo ($cliente != null ? $cliente['id'] : '') ?>">
 
-                    <label>Nome</label>
-                    <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo ($cliente != null ? $cliente['nome'] : '') ?>">
+                    <div class="row mb-3">
+                        <div class="col-sm-6 col-md-4">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?php echo ($cliente != null ? $cliente['nome'] : '') ?>">
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <label>E-mail</label>
+                            <input type="email" class="form-control" name="email" placeholder="E-mail" value="<?php echo ($cliente != null ? $cliente['email'] : '') ?>">
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <label>Telefone</label>
+                            <input type="text" class="form-control" name="email" placeholder="E-mail" value="<?php echo ($cliente != null ? $cliente['email'] : '') ?>">
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <label>Data de Nascimento</label>
+                            <input type="date" class="form-control" name="email" placeholder="E-mail" value="<?php echo ($cliente != null ? $cliente['email'] : '') ?>">
+                        </div>
+                    </div>
 
                     <input class="btn btn-warning" value="Limpar" type="reset">
                     <button class="btn btn-primary" type="submit">Salvar</button>

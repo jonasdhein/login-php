@@ -16,6 +16,9 @@ if ($tipo == 'cliente') {
 
     $id = $_POST["id"];
     $nome = $_POST["nome"];
+    $email = $_POST["email"];
+    //telefone
+    //data nascimento
 
     if (!isset($nome) || $nome == '') {
         $_SESSION['erro'] = "Informe um nome para o cliente";
@@ -23,10 +26,16 @@ if ($tipo == 'cliente') {
         exit();
     }
 
+    if (!isset($email) || $email == '') {
+        $_SESSION['erro'] = "Informe um e-mail para o cliente";
+        header('Location: ../clientes.php');
+        exit();
+    }
+
     if (isset($id) && $id != '') {
-        $sql = "UPDATE clientes SET nome = ? WHERE id = ?";
+        $sql = "UPDATE clientes SET nome = ?, email = ? WHERE id = ?";
         $stmt = $conexao->prepare($sql);
-        $return = $stmt->execute([$nome, $id]);
+        $return = $stmt->execute([$nome, $email, $id]);
 
         if ($return) {
             $_SESSION['sucesso'] = "Cliente alterado com sucesso!";
@@ -34,9 +43,9 @@ if ($tipo == 'cliente') {
             exit();
         }
     } else {
-        $sql = "INSERT INTO clientes (nome) VALUES(?)";
+        $sql = "INSERT INTO clientes (nome, email) VALUES(?,?)";
         $stmt = $conexao->prepare($sql);
-        $return = $stmt->execute([$nome]);
+        $return = $stmt->execute([$nome, $email]);
 
         if ($return) {
             $_SESSION['sucesso'] = "Cliente incluído com sucesso!";
